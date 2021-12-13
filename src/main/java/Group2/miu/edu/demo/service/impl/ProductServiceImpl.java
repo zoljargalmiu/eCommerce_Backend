@@ -36,10 +36,11 @@ public class ProductServiceImpl implements ProductService {
     public boolean update(int id, Product product) {
         Product pr = findById(id);
         if (pr != null) {
-            pr.setName(product.getName());
+            pr.setTitle(product.getTitle());
+            pr.setDescription(product.getDescription());
             pr.setQuantity(product.getQuantity());
             pr.setPrice(product.getPrice());
-            pr.setDescription(product.getDescription());
+
             save(pr);
             return true;
         }

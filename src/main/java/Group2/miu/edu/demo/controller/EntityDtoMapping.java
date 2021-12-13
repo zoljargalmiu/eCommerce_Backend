@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 
 public class EntityDtoMapping {
 
-    public static List<ProductDto> roleToDto(List<Product> ent) {
+    public static List<ProductDto> productToDto(List<Product> ent) {
         List<ProductDto> oDtoList = new ArrayList<ProductDto>();
         for(Product p: ent) {
             ProductDto pDto = new ProductDto();
             if(p.getUser() != null)
                 pDto.setUser(p.getUser().getId());
-            pDto.setName(p.getName());
+            pDto.setTitle(p.getTitle());
             pDto.setDescription(p.getDescription());
             pDto.setPrice(p.getPrice());
             pDto.setQuantity(p.getQuantity());
@@ -35,7 +35,7 @@ public class EntityDtoMapping {
         uDto.setPassword(user.getPassword());
         uDto.setRole(user.getRole());
         uDto.setStatus(user.getStatus());
-//        uDto.setProducts(roleToDto(user.getProducts()));
+//        uDto.setProducts(productToDto(user.getProducts()));
         return uDto;
     }
 

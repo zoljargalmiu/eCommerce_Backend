@@ -10,8 +10,9 @@ import java.util.List;
 @Data
 public class ProductDto {
     private int id;
-    private String name;
+    private String title;
     private double price;
+    private String image;
     private String description;
     private int quantity;
     private Integer user;

@@ -7,7 +7,6 @@ import org.hibernate.annotations.FetchMode;
 import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +17,7 @@ import java.util.Set;
 @Getter
 @Entity
 @Builder
-public class User implements Serializable {
+public class User {
 
     @Id
     @GeneratedValue

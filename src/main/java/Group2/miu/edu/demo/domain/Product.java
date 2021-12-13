@@ -21,10 +21,14 @@ public class Product  implements Serializable {
     @Id
     @GeneratedValue
     private int id;
-    private  String name;
+    private  String title;
     private double price;
+    private String image;
+    @Column(length = 500)
     private String description;
     private int quantity;
+    private String category;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "seller_id")
