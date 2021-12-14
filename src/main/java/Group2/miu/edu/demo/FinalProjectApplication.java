@@ -1,6 +1,7 @@
 package Group2.miu.edu.demo;
 
 import Group2.miu.edu.demo.domain.*;
+import Group2.miu.edu.demo.repo.CardItemRepo;
 import Group2.miu.edu.demo.repo.ProductRepository;
 import Group2.miu.edu.demo.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ import java.util.List;
 public class FinalProjectApplication {
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private CardItemRepo cardItemRepo;
 
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
@@ -157,5 +161,12 @@ public class FinalProjectApplication {
 				.build();
 
 		userRepository.save(user);
+		CardItem cardItem = CardItem.builder()
+
+				.user(user)
+				.products(products)
+				.build();
+
+		cardItemRepo.save(cardItem);
 	}
 }
