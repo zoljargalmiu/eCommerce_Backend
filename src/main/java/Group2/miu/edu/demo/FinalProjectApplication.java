@@ -162,7 +162,6 @@ public class FinalProjectApplication {
 
 		userRepository.save(user);
 		CardItem cardItem = CardItem.builder()
-
 				.user(user)
 				.products(products)
 				.build();

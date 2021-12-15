@@ -4,6 +4,8 @@ import Group2.miu.edu.demo.domain.User;
 import Group2.miu.edu.demo.repo.UserOrderRepository;
 import Group2.miu.edu.demo.repo.UserRepository;
 import Group2.miu.edu.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +13,9 @@ import java.util.List;
 public class UserServiceImpls implements UserService {
 
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
 
     public UserServiceImpls(UserRepository userRepository)
     {
@@ -29,7 +34,16 @@ public class UserServiceImpls implements UserService {
 
     @Override
     public User save(User user) {
-        return null != user ? userRepository.save(user) : null;
+
+        User newUser = new User();
+        newUser.setName(user.getName());
+        newUser.setUserName(user.getUserName());
+        newUser.setPassword(bcryptEncoder.encode(user.getPassword()));
+        newUser.setRole(user.getRole());
+        newUser.setStatus(user.getStatus());
+        newUser.setAddress(user.getAddress());
+
+        return userRepository.save(newUser);
     }
 
     @Override
